@@ -17,7 +17,7 @@ knitr::opts_chunk$set(
 app_name <- "INFINITy"
 ```
 
-# **`r app_name `** <img src='man/figures/hex.png' align="right" height="139" /> a fast and accurate tool for classifying human influenza A and B virus sequences
+# **`r app_name `** <img src='man/figures/hex.png' align="right" height="200" /> a fast and accurate tool for classifying human influenza A and B virus sequences
 
 <!-- badges: start -->
 [![DOI](https://zenodo.org/badge/COMPLETE!!)](https://zenodo.org/badge/latestdoi/COMPLETE!!)
