@@ -7,10 +7,6 @@ Marco Cacciabue, Debora Marcone
 <!-- badges: start -->
 
 [![DOI](https://zenodo.org/badge/COMPLETE!!)](https://zenodo.org/badge/latestdoi/COMPLETE!!)
-[![Travis build
-status](https://travis-ci.com/marcocacciabue/infinity.svg?branch=master)](https://travis-ci.com/marcocacciabue/infinity)
-[![Codecov test
-coverage](https://codecov.io/gh/marcocacciabue/infinity/branch/master/graph/badge.svg)](https://codecov.io/gh/marcocacciabue/infinity?branch=master)
 [![](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://www.tidyverse.org/lifecycle/#stable)
 <!-- badges: end -->
 
@@ -48,6 +44,9 @@ infinity::runExample("app.R")
 :+1: You are ready to classify your data.
 
 ## :whale: Docker image available
+
+Another way to run **INFINITy** is to use the docker image. For this
+please follow these steps:
 
 1.  If you don´t already have it, install docker:
     <https://www.docker.com/get-started>.
