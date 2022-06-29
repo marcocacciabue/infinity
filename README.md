@@ -45,8 +45,8 @@ infinity::runExample("app.R")
 
 ## :whale: Docker image available
 
-Another way to run **INFINITy** is to use the docker image. For this
-please follow these steps:
+Another way to run **INFINITy** is to use the docker image. Follow these
+steps:
 
 1.  If you don´t already have it, install docker:
     <https://www.docker.com/get-started>.
@@ -64,7 +64,7 @@ downloading is complete run the following:
 docker run -d --rm -p 3838:3838 cacciabue/infinity:latest
 ```
 
-4.  finally, open your favorite browser and go to
+4.  Finally, open your favorite browser and go to
     <http://localhost:3838/>
 5.  The app should be up and running in your browser. Load the fasta
     file and press RUN.
