@@ -1,0 +1,66 @@
+<hr>
+
+<div class="container">
+  
+  <!-- FOOTER -->
+  <footer>
+  <p><a href="#" data-toggle="modal" data-target="#modal-credits">Acknowledgements</a></p>
+  </footer>
+
+</div>
+
+<!-- Modal - Credits -->
+<div class="modal fade" id="modal-credits" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal-dialog">
+<div class="modal-content">
+  <div class="modal-header">
+  <button type="button" class="close" align="center" data-dismiss="modal" aria-hidden="true">&times;</button>
+  <p class="title" id="myModalLabel">Acknowledgements</p>
+  </div>
+  <div class="modal-body">
+    <p>INFINITy was built using RShiny by Marco Cacciabue and Débora Marcone.</p>
+<p>If you use INFINITy please consider citing the following preprint:
+</p>
+    <p>Data acknowledgement</p>
+    <p>We would like to thank the GISAID Initiative and are grateful to all of the data contributors, i.e. the Authors, the Originating
+laboratories responsible for obtaining the specimens, and the Submitting laboratories for generating the genetic sequence and
+metadata and sharing via the GISAID Initiative, on which this research is based.<br>
+<br>Elbe, S., and Buckland-Merrett, G. (2017) Data, disease and diplomacy: GISAID’s innovative contribution to global health. Global
+Challenges, 1:33-46.
+DOI: <a href="https://doi.org/10.1002/gch2.1018">10.1002/gch2.1018</a> PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6607375/">PMC6607375</a> <br>
+<br>
+Note: When using results from these analyses in your manuscript, ensure that you also acknowledge the Contributors of data, i.e.
+“We gratefully acknowledge all the Authors, the Originating laboratories responsible for obtaining the specimens, and the Submitting
+laboratories for generating the genetic sequence and metadata and sharing via the GISAID Initiative, on which this research is
+based.”<br>
+<br>
+Also, cite the following reference:
+Shu, Y., McCauley, J. (2017) GISAID: From vision to reality. EuroSurveillance, 22(13)
+DOI: <a href="https://doi.org/10.2807/1560-7917.ES.2017.22.13.30494">10.2807/1560-7917.ES.2017.22.13.30494</a> PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5388101/">PMC5388101</a> </p><br>
+<br>
+   
+    <p>The following R packages were used to build INFINITy:</p>
+    <p>
+      <code>base</code><code>ranger</code><code>kmer</code>
+      <code>ape</code><code>DT</code><code>plotly</code>
+      <code>rintrojs</code><code>shinythemes</code><code>magrittr</code>
+      <code>dplyr</code><code>shinyjs</code><code>tibble</code>
+      <code>RColorBrewer</code><code>parallel</code><code>shiny</code>
+    </p>
+  
+  </div>
+  <div class="modal-footer">
+  <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+  </div>
+</div><!-- /.modal-content -->
+</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<script src="plugins/fittext_1.2/jquery.fittext.js"></script>
+<script src="plugins/fittext.js"></script>
+
+<script type="text/javascript">
+  jQuery(".fit-h1").fitText(1.2, { minFontSize: '38px', maxFontSize: '42px' });
+  jQuery(".fit-h2").fitText(1.2, { minFontSize: '18px', maxFontSize: '26px' });
+  jQuery(".fit-text").fitText(0.8, { minFontSize: '18px', maxFontSize: '24px' });
+</script>

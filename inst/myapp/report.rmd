@@ -1,0 +1,82 @@
+---
+title: "INFINITy report"
+output:
+  html_document:
+    theme:
+      bg: "#FFFFFF"
+      fg: "#4e79cb"
+      primary: "#ffc72c"
+      secondary: "#ee65cd"
+      base_font:
+        google: "Prompt"
+      code_font:
+        google: "JetBrains Mono"
+---
+
+This report was created using the **INFINITy: a machine learning-based web application for human influenza A & B virus classification v`r version()`** software for subtyping of Human Influenza HA sequences.<br />
+
+<h2>
+
+Run stats
+
+</h2>
+
+Run was performed on `r Sys.Date()`.<br /> from which **`r as.character(length(data_reactive()$data_out$Label))`** sequences were selected for analysis.<br />
+
+<h2>
+
+Output table
+
+</h2>
+
+The following table lists the sequences under analysis and the corresponding classification results.
+
+```{r,echo=FALSE, warning=FALSE,message=FALSE}
+
+col<-"#ee65cd"
+    col2<-"#ffc72c"
+    table<-table()
+    datatable(table,selection = 'single',
+              style = 'bootstrap',
+              extensions = 'Buttons',
+              options = list(
+                columnDefs = list(list(targets = c(5,7,8), visible = FALSE)),
+                dom = 'Bfrtip',
+                lengthMenu = list(c(5, 15, -1), c('5', '15', 'All')),
+                pageLength = 15,
+                buttons =
+                  list('copy', 'print', list(
+                    extend = 'collection',
+                    buttons = list(
+                      list(extend = 'csv', filename = paste(input$file[1,1],"INFINITy_results"),sep=""),
+                      list(extend = 'excel', filename = paste(input$file[1,1],"INFINITy_results"),sep=""),
+                      list(extend = 'pdf', filename = paste(input$file[1,1],"INFINITy_results"),sep="")),
+                    text = 'Download'
+                  ),
+                list(
+                  extend = "collection",
+                  text = 'Show All',
+                  action = DT::JS("function ( e, dt, node, config ) {
+                                    dt.page.len(-1);
+                                    dt.ajax.reload();
+                                }")
+                ))
+              ))%>%formatStyle("Length","Length_QC",backgroundColor = styleEqual(c(0, 1), c(col2, col)))%>% 
+                   formatStyle("N","N_QC",backgroundColor = styleEqual(c(0, 1), c(col2, col)))%>%                                         
+                   formatStyle("Probability","Probability_QC",backgroundColor = styleEqual(c(0, 1), c(col2, col)))    
+```
+
+<h2>
+
+Classification models
+
+</h2>
+
+The following table lists the models used for the classification.
+
+```{r,echo=FALSE, warning=FALSE,message=FALSE}
+
+
+model1_data<-model_table()
+  datatable(model1_data)
+```
