@@ -10,9 +10,13 @@ Marco Cacciabue, Debora Marcone
 [![](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://www.tidyverse.org/lifecycle/#stable)
 <!-- badges: end -->
 
-### [INFINITy web-application!](https://cacciabue.shinyapps.io/infinit/)
+If you wish to run the app without installation and directly on the web
+go to:
 
-in production [Cacciabue et al 2022](https://www.biorxiv.org/)
+## [INFINITy web-application!](https://cacciabue.shinyapps.io/infinit/)
+
+If you find our app useful please consider citing: [Cacciabue et al
+2022](https://www.biorxiv.org/)
 
 ## :arrow\_double\_down: Installation
 
@@ -57,8 +61,9 @@ docker pull cacciabue/infinity:latest
 ```
 
 and wait for the image to download. You only have to run this command
-the first time, or whenever you want to check for updates. 3. Once the
-downloading is complete run the following:
+the first time, or whenever you want to check for updates.
+
+3.  Once the downloading is complete run the following:
 
 ``` bash
 docker run -d --rm -p 3838:3838 cacciabue/infinity:latest
