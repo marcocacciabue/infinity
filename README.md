@@ -20,9 +20,8 @@ If you find our app useful please consider citing: [Cacciabue et al
 
 ## :arrow\_double\_down: Installation
 
-If you have a working R and Rstudio setup you you can install the
-released version of **INFINITy** from [GitHub](https://github.com/)
-with:
+If you have a working R and Rstudio setup you can install the released
+version of **INFINITy** from [GitHub](https://github.com/) with:
 
 ``` r
 if (!require("devtools", quietly = TRUE))

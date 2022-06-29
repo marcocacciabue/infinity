@@ -34,7 +34,7 @@ If you find our app useful please consider citing: [Cacciabue et al 2022](https:
 ## :arrow_double_down: Installation
 
 If you have a working R and Rstudio setup you
-you can install the released version of **`r app_name `** from [GitHub](https://github.com/) with:
+can install the released version of **`r app_name `** from [GitHub](https://github.com/) with:
 
 ``` r
 if (!require("devtools", quietly = TRUE))
