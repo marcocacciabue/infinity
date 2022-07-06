@@ -14,7 +14,7 @@ Language: es
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
-biocViews: 
+biocViews:
 Imports: 
     ape,
     Biostrings,
@@ -35,7 +35,5 @@ Imports:
     tibble
 Suggests: 
     rmarkdown,
-    knitr,
-    testthat (>= 3.0.0)
+    knitr
 VignetteBuilder: knitr
-Config/testthat/edition: 3
