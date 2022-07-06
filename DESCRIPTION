@@ -32,7 +32,8 @@ Imports:
     shinyjs,
     shinylogs,
     shinyWidgets,
-    tibble
+    tibble,
+    usethis
 Suggests: 
     rmarkdown,
     knitr
