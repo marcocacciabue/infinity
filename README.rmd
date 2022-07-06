@@ -63,7 +63,7 @@ Another way to run **`r app_name `** is to use the docker image. Follow these st
 2.    Open a terminal and run the following:
 
 ```{bash, eval=FALSE}
-docker pull cacciabue/infinity:latest
+docker pull cacciabue/infinity:developing
 
 ```
 
@@ -71,7 +71,7 @@ and wait for the image to download. You only have to run this command the first 
 
 3.    Once the downloading is complete run the following:
 ```{bash, eval=FALSE}
-docker run -d --rm -p 3838:3838 cacciabue/infinity:latest
+docker run -d --rm -p 3838:3838 cacciabue/infinity:developing
 
 ```
 

@@ -56,7 +56,7 @@ steps:
 2.  Open a terminal and run the following:
 
 ``` bash
-docker pull cacciabue/infinity:latest
+docker pull cacciabue/infinity:developing
 ```
 
 and wait for the image to download. You only have to run this command
@@ -65,7 +65,7 @@ the first time, or whenever you want to check for updates.
 3.  Once the downloading is complete run the following:
 
 ``` bash
-docker run -d --rm -p 3838:3838 cacciabue/infinity:latest
+docker run -d --rm -p 3838:3838 cacciabue/infinity:developing
 ```
 
 4.  Finally, open your favorite browser and go to
