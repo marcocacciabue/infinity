@@ -181,11 +181,11 @@ Also, remember that the file must NOT exceed 2 MB in size.
     
     n_QC<-(n_length<2)
     
-    if (input$select=="Full_HA"){
-      Length_QC<-(genome_length>1700)&(genome_length<2100)
+    if (input$select=="FULL_HA"){
+      Length_QC<-(genome_length>1600)&(genome_length<2000)
     }else{
       
-      Length_QC<-(genome_length>900)&(genome_length<1200)
+      Length_QC<-(genome_length>900)&(genome_length<1100)
     }
     Probability_QC<-probability>0.6
     # distance<-kdistance(query,k=model$kmer)
