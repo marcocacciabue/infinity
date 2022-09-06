@@ -1,3 +1,4 @@
+# library(renv)
 library(shiny)
 library(bslib)
 library(ranger)
@@ -75,7 +76,7 @@ ui<-shinyUI(
         br(),
         conditionalPanel(
           condition='output.table_reject!=null && output.table_reject!=""',
-          div(strong("The following sequences have NOT passed the quality test"))),
+          div(strong("The following sequences have"),strong("NOT passed",style="color:red"),strong(" the quality test"))),
         br(),
         DT::dataTableOutput("table_reject"),
         conditionalPanel(

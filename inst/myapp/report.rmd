@@ -33,11 +33,10 @@ The following table lists the sequences under analysis and the corresponding cla
 
 ```{r,echo=FALSE, warning=FALSE,message=FALSE}
 
-col<-"#ee65cd"
-    col2<-"#ffc72c"
+    col2<-"#ee65cd"
+    col<-"#ffc72c"
     table<-table()
-    datatable(table,selection = 'single',
-              style = 'bootstrap',
+ datatable(table,selection = 'single',
               extensions = 'Buttons',
               options = list(
                 columnDefs = list(list(targets = c(5,7,8), visible = FALSE)),
@@ -48,9 +47,9 @@ col<-"#ee65cd"
                   list('copy', 'print', list(
                     extend = 'collection',
                     buttons = list(
-                      list(extend = 'csv', filename = paste(input$file[1,1],"INFINITy_results"),sep=""),
-                      list(extend = 'excel', filename = paste(input$file[1,1],"INFINITy_results"),sep=""),
-                      list(extend = 'pdf', filename = paste(input$file[1,1],"INFINITy_results"),sep="")),
+                      list(extend = 'csv', filename = paste("INFINITy_results"),sep=""),
+                      list(extend = 'excel', filename = paste("INFINITy_results"),sep=""),
+                      list(extend = 'pdf', filename = paste("INFINITy_results"),sep="")),
                     text = 'Download'
                   ),
                 list(
@@ -63,7 +62,9 @@ col<-"#ee65cd"
                 ))
               ))%>%formatStyle("Length","Length_QC",backgroundColor = styleEqual(c(0, 1), c(col2, col)))%>% 
                    formatStyle("N","N_QC",backgroundColor = styleEqual(c(0, 1), c(col2, col)))%>%                                         
-                   formatStyle("Probability","Probability_QC",backgroundColor = styleEqual(c(0, 1), c(col2, col)))    
+                   formatStyle("Probability","Probability_QC",backgroundColor = styleEqual(c(0, 1), c(col2, col)))
+   
+     
 ```
 
 <h2>
