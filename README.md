@@ -11,9 +11,11 @@ Marco Cacciabue, Débora N. Marcone
 <!-- badges: end -->
 
 If you wish to run the app without installation and directly on the web
-go to:
+go to one the following servers:
 
-## [INFINITy web-application!](https://cacciabue.shinyapps.io/infinit/)
+## [INFINITy web-application official server!](https://infinity.unlu.edu.ar/)
+
+## [INFINITy web-application secondary server!](https://cacciabue.shinyapps.io/infinity/)
 
 If you find our app useful please consider citing: [Cacciabue et al
 2022](https://www.biorxiv.org/)

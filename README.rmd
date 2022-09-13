@@ -24,9 +24,11 @@ app_name <- "INFINITy"
 [![](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 <!-- badges: end -->
 
-If you wish to run the app without installation and directly on the web go to:
+If you wish to run the app without installation and directly on the web go to one the following servers:
 
-## [INFINITy web-application!](https://cacciabue.shinyapps.io/infinit/)
+## [INFINITy web-application official server!](https://infinity.unlu.edu.ar/)
+
+## [INFINITy web-application secondary server!](https://cacciabue.shinyapps.io/infinity/)
 
 
 If you find our app useful please consider citing: [Cacciabue et al 2022](https://www.biorxiv.org/)
