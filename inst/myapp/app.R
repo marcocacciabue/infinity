@@ -51,12 +51,12 @@ ui<-shinyUI(
         includeHTML("www/title.html"),
         div("Enabled by data from",tags$a(img(style="width: 50px", src = "GISAID.png"),href="https://www.gisaid.org/")),
         br(),
-        textAreaInput('query', 'Paste your query sequences in FASTA format into the field below', value = "", placeholder = "", width = "70%", height="100px"),
-        fileInput("file", "Submit a file with your query sequences in FASTA format",
+        textAreaInput('SequenceData', 'Paste your SequenceData sequences in FASTA format into the field below', value = "", placeholder = "", width = "70%", height="100px"),
+        fileInput("file", "Submit a file with your SequenceData sequences in FASTA format",
                   accept = c(".text",".fasta",".fas",".fasta")),
         radioGroupButtons(
           inputId = "select",
-          label = "Choose the model according your query length sequences",
+          label = "Choose the model according your SequenceData length sequences",
           choices = c("FULL_HA", "HA1"),
           status = "primary",
           checkIcon = list(
@@ -91,9 +91,9 @@ ui<-shinyUI(
   ))
 
 server <- function(input, output, session) {
-  values <- reactiveValues(QUERY_FILE = NULL)
+  values <- reactiveValues(SequenceData_FILE = NULL)
   observeEvent(input$go, {
-    if(length(input$file)==0&(input$query=="")){
+    if(length(input$file)==0&(input$SequenceData=="")){
       showModal(modalDialog(
         title = "Important message", easyClose = TRUE,
         "Please load the fasta file (or the sequence) first and then press RUN.
@@ -107,39 +107,39 @@ Also, remember that the file must NOT exceed 2 MB in size.
   # })
   model_reactive <- eventReactive(input$select,{
   if (input$select=="FULL_HA"){
-    model <- FULL_HA}else{
-    model <- HA1
+    model <- infinity::FULL_HA}else{
+    model <- infinity::HA1
     }
     list(model=model)
   })
-  query_data<- observeEvent(input$query,{
-    req(input$query)
+  SequenceData_data<- observeEvent(input$SequenceData,{
+    req(input$SequenceData)
     #gather input and set up temp file
-    query_tmp <- input$query
+    SequenceData_tmp <- input$SequenceData
     tmp <- tempfile(fileext = ".fa")
 
 
     #this makes sure the fasta is formatted properly
-    if (startsWith(query_tmp, ">")){
-      writeLines(query_tmp, tmp)
+    if (startsWith(SequenceData_tmp, ">")){
+      writeLines(SequenceData_tmp, tmp)
     } else {
-      writeLines(paste0(">Query\n",query_tmp), tmp)
+      writeLines(paste0(">SequenceData\n",SequenceData_tmp), tmp)
     }
-    values$QUERY_FILE<-tmp
+    values$SequenceData_FILE<-tmp
   })
 
 
-  query_data<- observeEvent(input$file,{
+  SequenceData_data<- observeEvent(input$file,{
     req(input$file)
 
-    values$QUERY_FILE<-input$file[1,4]
+    values$SequenceData_FILE<-input$file[1,4]
 
   })
 
 
 
   data_reactive<- eventReactive(input$go,{
-    req(values$QUERY_FILE)
+    req(values$SequenceData_FILE)
     progress <- shiny::Progress$new()
     on.exit(progress$close())
     progress$set(message = "processing data", value = 0)
@@ -147,38 +147,31 @@ Also, remember that the file must NOT exceed 2 MB in size.
 
 
 
-    tmp<-values$QUERY_FILE
-    query<-read.FASTA(tmp,type = "DNA")
+    tmp<-values$SequenceData_FILE
+    SequenceData<-ape::read.FASTA(tmp,type = "DNA")
 
     model <- model_reactive()$model
 
 
-    #Calculate k-mer counts from query sequences
+    #Calculate k-mer counts from SequenceData sequences
     progress$inc(0.4, detail = paste("Counting kmers"))
-    query_count<-kcount(query , k=model$kmer)
-    genome_length<-0
-    n_length<-0
-    for(i in 1:length(query_count[,1])){
 
-      k<-query[i]
-      k<-as.matrix(k)
-      query_count[i,]<- query_count[i,]*model$kmer/(length(k))
-      genome_length[i]<-length(k)
-      n_length[i]<-round(100*base.freq(k,all = TRUE)[15],2)
-    }
-
-
+    NormalizeList<-infinity::CounterNormalizer(SequenceData,
+               model)
+    n_length <- NormalizeList$n_length
+    SequenceData_count <- NormalizeList$SequenceData_count
+    genome_length <- NormalizeList$genome_length
 
     progress$inc(0.9, detail = paste("Predicting"))
 
 
-    calling<-predict(model,query_count)
+    calling<-predict(model,SequenceData_count)
     #Run the predict method from de Ranger package, retaining the classification result from each tree in the model (to calculate a probability value for each classification)
-    calling_all<-predict(model,query_count,predict.all = TRUE)
+    calling_all<-predict(model,SequenceData_count,predict.all = TRUE)
     probability <- rep(0, length(calling_all$predictions[,1]))
 
     for (i in 1:length(calling_all$predictions[,1])) {
-      #extract predictions for each query sample in temp vector,
+      #extract predictions for each SequenceData sample in temp vector,
       #count the number of correct predictions and divide by number of trees to get a probability.
       temp<-calling_all$predictions[i,]
       probability[i] <- sum(temp==which(model$forest$levels==calling$predictions[i]))/model$num.trees
@@ -196,9 +189,9 @@ Also, remember that the file must NOT exceed 2 MB in size.
       Length_QC<-(genome_length>900)&(genome_length<1100)
     }
     Probability_QC<-probability>0.6
-    # distance<-kdistance(query,k=model$kmer)
+    # distance<-kdistance(SequenceData,k=model$kmer)
 
-    data_out <- data.frame(Label= row.names(query_count),
+    data_out <- data.frame(Label= row.names(SequenceData_count),
                            Clade=calling$prediction,
                            Probability=probability,
                            Length=genome_length,
