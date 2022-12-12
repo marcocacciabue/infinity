@@ -7,18 +7,19 @@
 CounterNormalizer(SequenceData, model)
 }
 \arguments{
-\item{model}{}
+\item{model}{A random forest classification model. Must be FULL_HA or HA1}
 }
 \value{
-A list of 3 vectors: normalized k-er counts, genome length and contents of undefined bases.
+A list of 3 vectors: normalized k-mer counts, genome length and contents of undefined bases.
 }
 \description{
 Counts k-mers of the size required by the input model and normalize the data regarding genome size.
 }
 \examples{
-load test dataset
+
 file_path<-system.file("extdata","test_dataset.fasta",package="infinity")
+
 SequenceData<-ape::read.FASTA(file_path,type = "DNA")
 
-NormalizedData<-CounterNormalizer(SequenceData,
+NormalizedData<-CounterNormalizer(SequenceData,FULL_HA)
 }

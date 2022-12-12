@@ -156,42 +156,11 @@ Also, remember that the file must NOT exceed 2 MB in size.
     #Calculate k-mer counts from SequenceData sequences
     progress$inc(0.4, detail = paste("Counting kmers"))
 
-    NormalizeList<-infinity::CounterNormalizer(SequenceData,
+    NormalizeData<-infinity::CounterNormalizer(SequenceData,
                model)
-    # n_length <- NormalizeList$n_length
-    # SequenceData_count <- NormalizeList$SequenceData_count
-    # genome_length <- NormalizeList$genome_length
-    #
-    # progress$inc(0.9, detail = paste("Predicting"))
-    #
-    #
-    # calling<-predict(model,SequenceData_count)
-    # #Run the predict method from de Ranger package, retaining the classification result from each tree in the model (to calculate a probability value for each classification)
-    # calling_all<-predict(model,SequenceData_count,predict.all = TRUE)
-    # probability <- rep(0, length(calling_all$predictions[,1]))
-    #
-    # for (i in 1:length(calling_all$predictions[,1])) {
-    #   #extract predictions for each SequenceData sample in temp vector,
-    #   #count the number of correct predictions and divide by number of trees to get a probability.
-    #   temp<-calling_all$predictions[i,]
-    #   probability[i] <- sum(temp==which(model$forest$levels==calling$predictions[i]))/model$num.trees
-    #
-    # }
-    #
-    #
-    #
-    # n_QC<-(n_length<2)
-    #
-    # if (model$info=="Flu"){
-    #   Length_QC<-(genome_length>1600)&(genome_length<2000)
-    # }
-    # if (model$info=="HA1"){
-    #   Length_QC<-(genome_length>900)&(genome_length<1100)
-    # }
-    # Probability_QC<-probability>0.6
-    # # distance<-kdistance(SequenceData,k=model$kmer)
 
-    data_out <-  infinity::PredictionCaller(NormalizeList,
+
+    data_out <-  infinity::PredictionCaller(NormalizeData,
                                   model)
 
     list(message="Done!",data_out=data_out)

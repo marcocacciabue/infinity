@@ -4,17 +4,11 @@
 \alias{QualityControl}
 \title{QualityControl}
 \usage{
-QualityControl(n_length, genome_length, probability)
-}
-\arguments{
-\item{probability}{}
+QualityControl(n_length, genome_length, probability, model)
 }
 \value{
 
 }
 \description{
 QualityControl
-}
-\examples{
-
 }

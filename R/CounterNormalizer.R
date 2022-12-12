@@ -4,20 +4,20 @@
 #' Counts k-mers of the size required by the input model and normalize the data regarding genome size.
 #'
 #'
-#' @param SequenceData
-#' @param model
+#' @param SequenceData A list of DNA sequences. Object must be created with the `ape` package. See example.
+#' @param model A random forest classification model. Must be FULL_HA or HA1. See [FULL_HA] and [HA1].
 #'
-#' @return A list of 3 vectors: normalized k-er counts, genome length and contents of undefined bases.
+#' @return A list of 3 vectors: normalized k-mer counts, genome length and contents of undefined bases.
 #'
 #' @export
 #'
 #' @examples
-#' load test dataset
+#'
 #' file_path<-system.file("extdata","test_dataset.fasta",package="infinity")
+#'
 #' SequenceData<-ape::read.FASTA(file_path,type = "DNA")
 #'
-#' NormalizedData<-CounterNormalizer(SequenceData,
-#            FULL_HA)
+#' NormalizedData<-CounterNormalizer(SequenceData,FULL_HA)
 
 CounterNormalizer<-function(SequenceData,
                     model){

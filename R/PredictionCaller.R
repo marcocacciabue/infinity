@@ -2,22 +2,33 @@
 #' PredictionCaller
 #'
 #' Performs the prediction and computes probability values. It also
+#' runs ´QualityControl()´ function on all samples.
 #'
-#' @param NormalizeList
-#' @param model
+#' @param NormalizedData A list of 3 vectors: normalized k-mer counts, genome length and contents of undefined bases.Produced by the´CounterNormalizer´ function
+#' @inheritParams model
 #'
 #' @return
 #' @export
 #'
 #' @examples
-PredictionCaller<-function(NormalizeList,
+#'
+#' file_path<-system.file("extdata","test_dataset.fasta",package="infinity")
+#'
+#' SequenceData<-ape::read.FASTA(file_path,type = "DNA")
+#'
+#' NormalizedData<-CounterNormalizer(SequenceData,FULL_HA)
+#'
+#' PredictedData <-  infinity::PredictionCaller(NormalizedData,infinity::FULL_HA)
+#'
+
+PredictionCaller<-function(NormalizedData,
                            model){
 
   calling<-predict(model,
-                               NormalizeList$SequenceData_count)
+                               NormalizedData$SequenceData_count)
   #Run the predict method from de Ranger package, retaining the classification result from each tree in the model (to calculate a probability value for each classification)
   calling_all<-predict(model,
-                                   NormalizeList$SequenceData_count,
+                                   NormalizedData$SequenceData_count,
                                    predict.all = TRUE)
   probability <- rep(0, length(calling_all$predictions[,1]))
 
@@ -30,17 +41,17 @@ PredictionCaller<-function(NormalizeList,
   }
 
 
-  QualityList<-QualityControl(n_length=NormalizeList$n_length,
-                           genome_length=NormalizeList$genome_length,
+  QualityList<-QualityControl(n_length=NormalizedData$n_length,
+                           genome_length=NormalizedData$genome_length,
                            probability,
                            model)
 
-  return(data.frame(Label= row.names(NormalizeList$SequenceData_count),
+  return(data.frame(Label= row.names(NormalizedData$SequenceData_count),
              Clade=calling$prediction,
              Probability=probability,
-             Length=NormalizeList$genome_length,
+             Length=NormalizedData$genome_length,
              Length_QC=QualityList$Length_QC,
-             N=NormalizeList$n_length,
+             N=NormalizedData$n_length,
              N_QC=QualityList$n_QC,
              Probability_QC=QualityList$Probability_QC))
 }
@@ -55,7 +66,6 @@ PredictionCaller<-function(NormalizeList,
 #' @param model
 #' @return
 #'
-#' @examples
 #'
 QualityControl<-function(n_length,
          genome_length,

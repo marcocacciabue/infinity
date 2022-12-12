@@ -4,14 +4,28 @@
 \alias{PredictionCaller}
 \title{PredictionCaller}
 \usage{
-PredictionCaller(NormalizeList, model)
+PredictionCaller(NormalizedData, model)
 }
 \arguments{
-\item{model}{}
+\item{NormalizedData}{A list of 3 vectors: normalized k-mer counts, genome length and contents of undefined bases.Produced by the´CounterNormalizer´ function}
+
+\item{model}{A random forest classification model. Must be FULL_HA or HA1. See}
 }
 \value{
 
 }
 \description{
 Performs the prediction and computes probability values. It also
+runs ´QualityControl´ function on all samples.
+}
+\examples{
+
+file_path<-system.file("extdata","test_dataset.fasta",package="infinity")
+
+SequenceData<-ape::read.FASTA(file_path,type = "DNA")
+
+NormalizedData<-CounterNormalizer(SequenceData,FULL_HA)
+
+PredictedData <-  infinity::PredictionCaller(NormalizedData,infinity::FULL_HA)
+
 }
