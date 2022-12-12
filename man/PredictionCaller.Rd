@@ -9,14 +9,26 @@ PredictionCaller(NormalizedData, model)
 \arguments{
 \item{NormalizedData}{A list of 3 vectors: normalized k-mer counts, genome length and contents of undefined bases.Produced by the´CounterNormalizer´ function}
 
-\item{model}{A random forest classification model. Must be FULL_HA or HA1. See}
+\item{model}{A random forest classification model. Must be FULL_HA or HA1. See \link{FULL_HA} and \link{HA1}.}
 }
 \value{
-
+Data.frame with the classification results and quality checks.
+The output has the following properties:
+\itemize{
+\item Each line corresponds to one sequence.
+\item \code{Label} is the name of the sequence.
+\item \code{Clade} is the corresponding prediction.
+\item \code{Probability} is the proportions of trees that agreed with the Clade result. values between 0 to 1.
+\item \code{Probability_QC} a logical value. If \code{TRUE} the sequence passed the quality filter for probability.
+\item \code{Length} Sequence length.
+\item \code{Length_QC} a logical value. If \code{TRUE} the sequence passed the quality filter for length.
+\item \code{N} proportions of undefined bases in the sequence. The lower the better.
+\item \code{N_QC} a logical value. If \code{TRUE} the sequence passed the quality filter for undefined bases.
+}
 }
 \description{
 Performs the prediction and computes probability values. It also
-runs ´QualityControl´ function on all samples.
+runs ´QualityControl()´ function on all samples.
 }
 \examples{
 

@@ -5,9 +5,20 @@
 #' runs ´QualityControl()´ function on all samples.
 #'
 #' @param NormalizedData A list of 3 vectors: normalized k-mer counts, genome length and contents of undefined bases.Produced by the´CounterNormalizer´ function
-#' @inheritParams model
+#' @inheritParams CounterNormalizer
 #'
-#' @return
+#' @return Data.frame with the classification results and quality checks.
+#' The output has the following properties:
+#' * Each line corresponds to one sequence.
+#' * `Label` is the name of the sequence.
+#' * `Clade` is the corresponding prediction.
+#' * `Probability` is the proportions of trees that agreed with the Clade result. values between 0 to 1.
+#' * `Probability_QC` a logical value. If `TRUE` the sequence passed the quality filter for probability.
+#' * `Length` Sequence length.
+#' * `Length_QC` a logical value. If `TRUE` the sequence passed the quality filter for length.
+#' * `N` proportions of undefined bases in the sequence. The lower the better.
+#' * `N_QC` a logical value. If `TRUE` the sequence passed the quality filter for undefined bases.
+#'
 #' @export
 #'
 #' @examples

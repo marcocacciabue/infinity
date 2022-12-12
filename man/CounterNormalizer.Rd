@@ -7,7 +7,9 @@
 CounterNormalizer(SequenceData, model)
 }
 \arguments{
-\item{model}{A random forest classification model. Must be FULL_HA or HA1}
+\item{SequenceData}{A list of DNA sequences. Object must be created with the \code{ape} package. See example.}
+
+\item{model}{A random forest classification model. Must be FULL_HA or HA1. See \link{FULL_HA} and \link{HA1}.}
 }
 \value{
 A list of 3 vectors: normalized k-mer counts, genome length and contents of undefined bases.
