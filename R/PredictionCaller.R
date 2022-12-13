@@ -35,6 +35,7 @@
 PredictionCaller<-function(NormalizedData,
                            model){
 
+
   calling<-predict(model,
                                NormalizedData$SequenceData_count)
   #Run the predict method from de Ranger package, retaining the classification result from each tree in the model (to calculate a probability value for each classification)

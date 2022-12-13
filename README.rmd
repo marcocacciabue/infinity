@@ -22,6 +22,7 @@ app_name <- "INFINITy"
 <!-- badges: start -->
 [![DOI](https://zenodo.org/badge/COMPLETE!!)](https://zenodo.org/badge/latestdoi/COMPLETE!!)
 [![](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
+[![R-CMD-check](https://github.com/marcocacciabue/infinity/workflows/R-CMD-check/badge.svg)](https://github.com/marcocacciabue/infinity/actions)
 <!-- badges: end -->
 
 If you wish to run the app without installation and directly on the web go to one the following servers:
