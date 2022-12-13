@@ -156,7 +156,7 @@ Also, remember that the file must NOT exceed 2 MB in size.
     #Calculate k-mer counts from SequenceData sequences
     progress$inc(0.4, detail = paste("Counting kmers"))
 
-    NormalizeData<-infinity::CounterNormalizer(SequenceData,
+    NormalizeData<-infinity::Kcounter(SequenceData,
                model)
 
 

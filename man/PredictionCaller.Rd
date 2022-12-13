@@ -7,7 +7,7 @@
 PredictionCaller(NormalizedData, model)
 }
 \arguments{
-\item{NormalizedData}{A list of 3 vectors: normalized k-mer counts, genome length and contents of undefined bases.Produced by the´CounterNormalizer´ function}
+\item{NormalizedData}{A list of 3 vectors: normalized k-mer counts, genome length and contents of undefined bases.Produced by the´Kcounter´ function}
 
 \item{model}{A random forest classification model. Must be FULL_HA or HA1. See \link{FULL_HA} and \link{HA1}.}
 }
@@ -32,12 +32,14 @@ runs ´QualityControl()´ function on all samples.
 }
 \examples{
 
+
+
 file_path<-system.file("extdata","test_dataset.fasta",package="infinity")
 
-SequenceData<-ape::read.FASTA(file_path,type = "DNA")
+sequence<-ape::read.FASTA(file_path,type = "DNA")
 
-NormalizedData<-CounterNormalizer(SequenceData,FULL_HA)
+NormalizedData <- Kcounter(SequenceData=sequence,model=FULL_HA)
 
-PredictedData <-  infinity::PredictionCaller(NormalizedData,infinity::FULL_HA)
+PredictedData <- PredictionCaller(NormalizedData=NormalizedData,model=FULL_HA)
 
 }

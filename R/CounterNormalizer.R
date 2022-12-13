@@ -1,5 +1,5 @@
 
-#' CounterNormalizer
+#' Kcounter
 #'
 #' Counts k-mers of the size required by the input model and normalize the data regarding genome size.
 #'
@@ -15,24 +15,25 @@
 #'
 #' file_path<-system.file("extdata","test_dataset.fasta",package="infinity")
 #'
-#' SequenceData<-ape::read.FASTA(file_path,type = "DNA")
+#' sequence<-ape::read.FASTA(file_path,type = "DNA")
 #'
-#' NormalizedData<-CounterNormalizer(SequenceData,FULL_HA)
+#' NormalizedData<-Kcounter(SequenceData=sequence,model=FULL_HA)
 
-CounterNormalizer<-function(SequenceData,
+Kcounter<-function(SequenceData,
                     model){
-  SequenceData_count<-kmer::kcount(SequenceData , k=model$kmer)
+
+  DataCount<-kmer::kcount(SequenceData , k=model$kmer)
   genome_length<-0
   n_length<-0
-  for(i in 1:length(SequenceData_count[,1])){
+  for(i in 1:length(DataCount[,1])){
 
     k<-SequenceData[i]
     k<-as.matrix(k)
-    SequenceData_count[i,]<- SequenceData_count[i,]*model$kmer/(length(k))
+    DataCount[i,]<- DataCount[i,]*model$kmer/(length(k))
     genome_length[i]<-length(k)
     n_length[i]<-round(100*ape::base.freq(k,all = TRUE)[15],2)
   }
- return(list(SequenceData_count=SequenceData_count,
+ return(list(DataCount=DataCount,
              genome_length=genome_length,
              n_length=n_length))
 }

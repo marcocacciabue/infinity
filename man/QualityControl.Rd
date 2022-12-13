@@ -6,8 +6,17 @@
 \usage{
 QualityControl(n_length, genome_length, probability, model)
 }
-\value{
+\arguments{
+\item{n_length}{numeric numeric}
 
+\item{genome_length}{numeric numeric}
+
+\item{probability}{numeric numeric}
+
+\item{model}{numeric numeric}
+}
+\value{
+A list with three logical vectors. In each case TRUE means pass.
 }
 \description{
 QualityControl

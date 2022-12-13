@@ -4,9 +4,8 @@
 #' Performs the prediction and computes probability values. It also
 #' runs ´QualityControl()´ function on all samples.
 #'
-#' @param NormalizedData A list of 3 vectors: normalized k-mer counts, genome length and contents of undefined bases.Produced by the´CounterNormalizer´ function
-#' @inheritParams CounterNormalizer
-#'
+#' @param NormalizedData A list of 3 vectors: normalized k-mer counts, genome length and contents of undefined bases.Produced by the´Kcounter´ function
+#' @inheritParams Kcounter
 #' @return Data.frame with the classification results and quality checks.
 #' The output has the following properties:
 #' * Each line corresponds to one sequence.
@@ -20,27 +19,41 @@
 #' * `N_QC` a logical value. If `TRUE` the sequence passed the quality filter for undefined bases.
 #'
 #' @export
-#'
+#' @importFrom ranger predictions
 #' @examples
+#'
+#'
 #'
 #' file_path<-system.file("extdata","test_dataset.fasta",package="infinity")
 #'
-#' SequenceData<-ape::read.FASTA(file_path,type = "DNA")
+#' sequence<-ape::read.FASTA(file_path,type = "DNA")
 #'
-#' NormalizedData<-CounterNormalizer(SequenceData,FULL_HA)
+#' NormalizedData <- Kcounter(SequenceData=sequence,model=FULL_HA)
 #'
-#' PredictedData <-  infinity::PredictionCaller(NormalizedData,infinity::FULL_HA)
+#' PredictedData <- PredictionCaller(NormalizedData=NormalizedData,model=FULL_HA)
 #'
 
 PredictionCaller<-function(NormalizedData,
                            model){
 
+   if (is.null(NormalizedData) | missing(NormalizedData)){
+    stop("'NormalizedData' must be indicated")
+  }
+  # hola <- function (pkg, name)
+  # {
+  #   pkg <- as.character(substitute(pkg))
+  #   name <- as.character(substitute(name))
+  #   get(name, envir = asNamespace(pkg), inherits = FALSE)
+  # }
+  # predict<- hola("ranger","predict.ranger")
+  #
+  # calling_null<-ranger::predictions(model)
 
   calling<-predict(model,
-                               NormalizedData$SequenceData_count)
+                               NormalizedData$DataCount)
   #Run the predict method from de Ranger package, retaining the classification result from each tree in the model (to calculate a probability value for each classification)
   calling_all<-predict(model,
-                                   NormalizedData$SequenceData_count,
+                                   NormalizedData$DataCount,
                                    predict.all = TRUE)
   probability <- rep(0, length(calling_all$predictions[,1]))
 
@@ -58,7 +71,7 @@ PredictionCaller<-function(NormalizedData,
                            probability,
                            model)
 
-  return(data.frame(Label= row.names(NormalizedData$SequenceData_count),
+  return(data.frame(Label= row.names(NormalizedData$DataCount),
              Clade=calling$prediction,
              Probability=probability,
              Length=NormalizedData$genome_length,
@@ -72,11 +85,11 @@ PredictionCaller<-function(NormalizedData,
 
 #' QualityControl
 #'
-#' @param n_length
-#' @param genome_length
-#' @param probability
-#' @param model
-#' @return
+#' @param n_length numeric numeric
+#' @param genome_length numeric numeric
+#' @param probability numeric numeric
+#' @param model numeric numeric
+#' @return A list with three logical vectors. In each case TRUE means pass.
 #'
 #'
 QualityControl<-function(n_length,
@@ -99,6 +112,8 @@ QualityControl<-function(n_length,
               n_QC=n_QC))
 
 }
+
+
 
 
 

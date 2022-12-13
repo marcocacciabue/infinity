@@ -1,26 +1,38 @@
 
 
+
+#' Run INFINITy shiny app
+#'
+#' Deploys a server that runs the INFINITy app locally
+#'
+#'
+#' @return a shiny app
 #' @export
-runExample <- function(example) {
-  # locate all the shiny app examples that exist
-  validExamples <- list.files(system.file("myapp", package = "infinity"))
+#'
+#' @examples
+#' \dontrun{
+#' runShinyApp()
+#' }
+#'
 
-  validExamplesMsg <-
-    paste0(
-      "Valid examples are: '",
-      paste(validExamples, collapse = "', '"),
-      "'")
+runShinyApp <- function() {
+  # # locate all the shiny app examples that exist
+  # validExamples <- list.files(system.file("myapp", package = "infinity"))
+  #
+  # validExamplesMsg <-
+  #   paste0(
+  #     "Valid examples are: '",
+  #     paste(validExamples, collapse = "', '"),
+  #     "'")
 
-  # if an invalid example is given, throw an error
-  if (missing(example) || !nzchar(example) ||
-      !example %in% validExamples) {
-    stop(
-      'Please run `runExample()` with a valid example app as an argument.\n',
-      validExamplesMsg,
-      call. = FALSE)
-  }
+  # # if an invalid example is given, throw an error
+  # if (missing(AppName) || !nzchar(AppName)) {
+  #   stop(
+  #     'Please run .\n',
+  #     call. = FALSE)
+  # }
 
   # find and launch the app
-  appDir <- system.file("myapp", example, package = "infinity")
+  appDir <- system.file("myapp", "app.R", package = "infinity")
   shiny::runApp(appDir, display.mode = "normal")
 }
