@@ -8,6 +8,7 @@ Marco Cacciabue, Débora N. Marcone
 
 [![DOI](https://zenodo.org/badge/COMPLETE!!)](https://zenodo.org/badge/latestdoi/COMPLETE!!)
 [![](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
+[![R-CMD-check](https://github.com/marcocacciabue/infinity/workflows/R-CMD-check/badge.svg)](https://github.com/marcocacciabue/infinity/actions)
 <!-- badges: end -->
 
 If you wish to run the app without installation and directly on the web
@@ -43,15 +44,37 @@ install it manually with Rstudio.
 To start the app simply run the following command:
 
 ``` r
-infinity::runExample("app.R")
+infinity::runShinyApp()
 ```
 
 :+1: You are ready to classify your data.
 
+## **INFINITy** is an R package
+
+This means that users that prefer working with a command-line interface
+can use some of the exported functions. We provide some basic usage of
+the functions:
+
+``` r
+# First we indicate the location of the fasta file. In this case, we use a test file provided with the package itself.
+file_path<-system.file("extdata","test_dataset.fasta",package="infinity")
+
+# We load the sequences
+sequence<-ape::read.FASTA(file_path,type = "DNA")
+
+# We the count and normalize the k-mers
+NormalizedData <- Kcounter(SequenceData=sequence,model=FULL_HA)
+
+# We perform the classification
+PredictedData <- PredictionCaller(NormalizedData=NormalizedData,model=FULL_HA)
+
+# The PredictedData dataframe contains the classifications and the control flags.
+```
+
 ## :whale: Docker image available
 
-Another way to run **INFINITy** is to use the docker image. Follow these
-steps:
+Another way to run **INFINITy** as a shiny app is to use the docker
+image. Follow these steps:
 
 1.  If you don´t already have it, install docker:
     <https://www.docker.com/get-started>.

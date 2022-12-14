@@ -11,7 +11,7 @@
 #'
 #' @examples
 #' \dontrun{
-#' runShinyApp()
+#' infinity::runShinyApp()
 #' }
 #'
 
