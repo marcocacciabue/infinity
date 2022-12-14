@@ -69,6 +69,8 @@ NormalizedData <- Kcounter(SequenceData=sequence,model=FULL_HA)
 PredictedData <- PredictionCaller(NormalizedData=NormalizedData,model=FULL_HA)
 
 # The PredictedData dataframe contains the classifications and the control flags.
+
+PredictedData
 ```
 
 ## :whale: Docker image available
