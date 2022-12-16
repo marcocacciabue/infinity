@@ -2,7 +2,7 @@
 #' PredictionCaller
 #'
 #' Performs the prediction and computes probability values. It also
-#' runs ´QualityControl()´ function on all samples.
+#' runs [QualityControl()] function on all samples.
 #'
 #' @param NormalizedData A list of 3 vectors: normalized k-mer counts, genome length and contents of undefined bases.Produced by the´Kcounter´ function
 #' @inheritParams Kcounter
@@ -39,15 +39,7 @@ PredictionCaller<-function(NormalizedData,
    if (is.null(NormalizedData) | missing(NormalizedData)){
     stop("'NormalizedData' must be indicated")
   }
-  # hola <- function (pkg, name)
-  # {
-  #   pkg <- as.character(substitute(pkg))
-  #   name <- as.character(substitute(name))
-  #   get(name, envir = asNamespace(pkg), inherits = FALSE)
-  # }
-  # predict<- hola("ranger","predict.ranger")
-  #
-  # calling_null<-ranger::predictions(model)
+
 
   calling<-predict(model,
                                NormalizedData$DataCount)
@@ -99,10 +91,10 @@ QualityControl<-function(n_length,
 
   n_QC<-(n_length<2)
 
-  if (model$info=="Flu"){
+  if ("Flu"==model$info){
     Length_QC<-(genome_length>1600)&(genome_length<2000)
   }
-  if (model$info=="HA1"){
+  if ("Flu_Ha1"==model$info){
     Length_QC<-(genome_length>900)&(genome_length<1100)
   }
   Probability_QC<-probability>0.6

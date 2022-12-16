@@ -14,7 +14,7 @@ Deploys a server that runs the INFINITy app locally
 }
 \examples{
 \dontrun{
-runShinyApp()
+infinity::runShinyApp()
 }
 
 }

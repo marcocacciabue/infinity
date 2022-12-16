@@ -58,13 +58,7 @@ ui<-shinyUI(
           inputId = "select",
           label = "Choose the model according your SequenceData length sequences",
           choices = c("FULL_HA", "HA1"),
-          status = "primary",
-          checkIcon = list(
-            yes = icon("ok",
-                       lib = "glyphicon"),
-            no = icon("remove",
-                      lib = "glyphicon"))
-        ),
+          status = "primary"),
         actionButton("go", "RUN"),
         HTML("<br><br><br>"),
         br(),
@@ -180,16 +174,18 @@ Also, remember that the file must NOT exceed 2 MB in size.
   table_pass<-reactive({
 
     table<-table()
+    # table<-table %>% filter(Probability_QC == 1 & N_QC == 1 & Length_QC == 1)
 
-    table<-table %>% filter(Probability_QC == 1 & N_QC == 1 & Length_QC == 1)
+    table<-table %>% filter(Probability_QC == 1)
   })
 
 
   table_reject<-reactive({
 
     table<-table()
+    # table<-table %>% filter(Probability_QC == 0 | N_QC == 0 | Length_QC == 0)
 
-    table<-table %>% filter(Probability_QC == 0 | N_QC == 0 | Length_QC == 0)
+    table<-table %>% filter(Probability_QC == 0)
   })
 
   output$table <- DT::renderDataTable({

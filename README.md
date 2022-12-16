@@ -2,7 +2,7 @@ Marco Cacciabue, Débora N. Marcone
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# **INFINITy** <img src='man/figures/hex.png' align="right" height="200" /> a fast and accurate tool for classifying human influenza A and B virus sequences
+# **INFINITy** <img src='man/figures/hex.png' style="float:right; height:200px;" /> a fast and accurate tool for classifying human influenza A and B virus sequences
 
 <!-- badges: start -->
 

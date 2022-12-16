@@ -28,7 +28,7 @@ The output has the following properties:
 }
 \description{
 Performs the prediction and computes probability values. It also
-runs ´QualityControl()´ function on all samples.
+runs \code{\link[=QualityControl]{QualityControl()}} function on all samples.
 }
 \examples{
 
