@@ -58,50 +58,52 @@ PredictionCaller<-function(NormalizedData,
   }
 
 
-  QualityList<-QualityControl(n_length=NormalizedData$n_length,
-                           genome_length=NormalizedData$genome_length,
-                           probability,
-                           model)
-
+  # QualityList<-QualityControl(n_length=NormalizedData$n_length,
+  #                          genome_length=NormalizedData$genome_length,
+  #                          probability,
+  #                          model)
+  samples<-rep(0,length(row.names(NormalizedData$DataCount)))
   return(data.frame(Label= row.names(NormalizedData$DataCount),
              Clade=calling$prediction,
              Probability=probability,
              Length=NormalizedData$genome_length,
-             Length_QC=QualityList$Length_QC,
+             Length_QC=samples,
              N=NormalizedData$n_length,
-             N_QC=QualityList$n_QC,
-             Probability_QC=QualityList$Probability_QC))
+             N_QC=samples,
+             Probability_QC=samples))
+  # return(data.frame(Label= row.names(NormalizedData$DataCount),
+  #                   Clade=calling$prediction,
+  #                   Probability=probability,
+  #                   Length=NormalizedData$genome_length,
+  #                   Length_QC=QualityList$Length_QC,
+  #                   N=NormalizedData$n_length,
+  #                   N_QC=QualityList$n_QC,
+  #                   Probability_QC=QualityList$Probability_QC))
 }
 
 
 
 #' QualityControl
 #'
-#' @param n_length numeric numeric
-#' @param genome_length numeric numeric
-#' @param probability numeric numeric
-#' @param model numeric numeric
+#' @param data data.frame obtained with [PredictionCaller()]
+#' @param QC_value numeric value from 0 to 1. (default = 0.6)
 #' @return A list with three logical vectors. In each case TRUE means pass.
 #'
 #'
-QualityControl<-function(n_length,
-         genome_length,
-         probability,
-         model){
+QualityControl<-function(data,
+                         QC_value=0.6){
 
-  n_QC<-(n_length<2)
+  data$n_QC<-(data$n_length<2)
 
   if ("Flu"==model$info){
-    Length_QC<-(genome_length>1600)&(genome_length<2000)
+    data$Length_QC<-(data$genome_length>1600)&(data$genome_length<2000)
   }
   if ("Flu_Ha1"==model$info){
-    Length_QC<-(genome_length>900)&(genome_length<1100)
+    data$Length_QC<-(data$genome_length>900)&(data$genome_length<1100)
   }
-  Probability_QC<-probability>0.6
+  data$Probability_QC<-data$probability>QC_value
 
-  return(list(Probability_QC=Probability_QC,
-              Length_QC=Length_QC,
-              n_QC=n_QC))
+  return(data)
 
 }
 

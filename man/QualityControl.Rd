@@ -4,16 +4,12 @@
 \alias{QualityControl}
 \title{QualityControl}
 \usage{
-QualityControl(n_length, genome_length, probability, model)
+QualityControl(data, QC_value = 0.6)
 }
 \arguments{
-\item{n_length}{numeric numeric}
+\item{data}{data.frame obtained with \code{\link[=PredictionCaller]{PredictionCaller()}}}
 
-\item{genome_length}{numeric numeric}
-
-\item{probability}{numeric numeric}
-
-\item{model}{numeric numeric}
+\item{QC_value}{numeric value from 0 to 1. (default = 0.6)}
 }
 \value{
 A list with three logical vectors. In each case TRUE means pass.
