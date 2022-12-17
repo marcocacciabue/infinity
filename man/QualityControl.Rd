@@ -4,12 +4,14 @@
 \alias{QualityControl}
 \title{QualityControl}
 \usage{
-QualityControl(data, QC_value = 0.6)
+QualityControl(data, QC_value = 0.6, model)
 }
 \arguments{
 \item{data}{data.frame obtained with \code{\link[=PredictionCaller]{PredictionCaller()}}}
 
 \item{QC_value}{numeric value from 0 to 1. (default = 0.6)}
+
+\item{model}{A random forest classification model. Must be FULL_HA or HA1. See \link{FULL_HA} and \link{HA1}.}
 }
 \value{
 A list with three logical vectors. In each case TRUE means pass.

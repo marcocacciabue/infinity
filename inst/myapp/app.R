@@ -155,17 +155,29 @@ Also, remember that the file must NOT exceed 2 MB in size.
 
 
     data_out <-  infinity::PredictionCaller(NormalizeData,
-                                  model)
-
+                                  model=model)
+    # data_out<-infinity::QualityControl(model=model,
+    #                                    data=data_out)
     list(message="Done!",data_out=data_out)
   })
+
+  data_predicted<-reactive({
+    req(values$SequenceData_FILE)
+    model <- model_reactive()$model
+    data_out<-data_reactive()$data_out
+
+    data_out<-infinity::QualityControl(model=model,
+                                       data=data_out)
+    data_out
+  })
+
   output$text <- renderText({
     data_reactive()$message
   })
 
   table<-reactive({
 
-    data_out<-data_reactive()$data_out
+    data_out<-data_predicted()
 
     data_out
 

@@ -87,21 +87,24 @@ PredictionCaller<-function(NormalizedData,
 #'
 #' @param data data.frame obtained with [PredictionCaller()]
 #' @param QC_value numeric value from 0 to 1. (default = 0.6)
+#' @inheritParams Kcounter
 #' @return A list with three logical vectors. In each case TRUE means pass.
 #'
+#' @export
 #'
 QualityControl<-function(data,
-                         QC_value=0.6){
+                         QC_value=0.6,
+                         model){
 
-  data$n_QC<-(data$n_length<2)
+  data$N_QC<-(data$N<2)
 
   if ("Flu"==model$info){
-    data$Length_QC<-(data$genome_length>1600)&(data$genome_length<2000)
+    data$Length_QC<-(data$Length>1600)&(data$Length<2000)
   }
   if ("Flu_Ha1"==model$info){
-    data$Length_QC<-(data$genome_length>900)&(data$genome_length<1100)
+    data$Length_QC<-(data$Length>900)&(data$Length<1100)
   }
-  data$Probability_QC<-data$probability>QC_value
+  data$Probability_QC<-data$Probability>QC_value
 
   return(data)
 
