@@ -21,7 +21,7 @@
 
 Kcounter<-function(SequenceData,
                     model){
-
+  ModelControl(model)
   DataCount<-kmer::kcount(SequenceData , k=model$kmer)
   genome_length<-0
   n_length<-0

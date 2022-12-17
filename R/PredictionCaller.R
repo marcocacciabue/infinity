@@ -39,6 +39,7 @@ PredictionCaller<-function(NormalizedData,
     stop("'NormalizedData' must be indicated")
   }
 
+  ModelControl(model)
 
   calling<-predict(model,
                                NormalizedData$DataCount)
@@ -107,6 +108,7 @@ PredictionCaller<-function(NormalizedData,
 QualityControl<-function(data,
                          QC_value=0.6,
                          model){
+  ModelControl(model)
 
   data$N_QC<-(data$N<2)
 
