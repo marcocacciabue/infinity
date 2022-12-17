@@ -59,6 +59,9 @@ ui<-shinyUI(
           label = "Choose the model according your SequenceData length sequences",
           choices = c("FULL_HA", "HA1"),
           status = "primary"),
+        sliderInput("QC", "Probability threshold (default 0.6):",
+                    min = 0.2, max = 1,
+                    value = 0.6, step = 0.05),
         actionButton("go", "RUN"),
         HTML("<br><br><br>"),
         br(),
@@ -167,7 +170,9 @@ Also, remember that the file must NOT exceed 2 MB in size.
     data_out<-data_reactive()$data_out
 
     data_out<-infinity::QualityControl(model=model,
-                                       data=data_out)
+                                       data=data_out,
+                                       QC_value=input$QC)
+    data_out<-infinity::Stringent_filter(data=data_out)
     data_out
   })
 

@@ -1,8 +1,7 @@
 
 #' PredictionCaller
 #'
-#' Performs the prediction and computes probability values. It also
-#' runs [QualityControl()] function on all samples.
+#' Performs the prediction and computes probability values.
 #'
 #' @param NormalizedData A list of 3 vectors: normalized k-mer counts, genome length and contents of undefined bases.Produced by the´Kcounter´ function
 #' @inheritParams Kcounter
@@ -92,6 +91,19 @@ PredictionCaller<-function(NormalizedData,
 #'
 #' @export
 #'
+#' @examples
+#'
+#' file_path<-system.file("extdata","test_dataset.fasta",package="infinity")
+#'
+#' sequence<-ape::read.FASTA(file_path,type = "DNA")
+#'
+#' NormalizedData <- Kcounter(SequenceData=sequence,model=FULL_HA)
+#'
+#' PredictedData <- PredictionCaller(NormalizedData=NormalizedData,model=FULL_HA)
+#'
+#' QualityControl(PredictedData,model=FULL_HA)
+#'
+#'
 QualityControl<-function(data,
                          QC_value=0.6,
                          model){
@@ -110,6 +122,41 @@ QualityControl<-function(data,
 
 }
 
+
+
+
+#' Stringent_filter
+#'
+#' Change Clade definition to unknown in samples with a probability score
+#' below a threshold
+#'
+#' @inheritParams QualityControl
+#'
+#' @return data.frame
+#' @export
+#'
+#' @examples
+#'
+#' file_path<-system.file("extdata","test_dataset.fasta",package="infinity")
+#'
+#' sequence<-ape::read.FASTA(file_path,type = "DNA")
+#'
+#' NormalizedData <- Kcounter(SequenceData=sequence,model=FULL_HA)
+#'
+#' PredictedData <- PredictionCaller(NormalizedData=NormalizedData,model=FULL_HA)
+#'
+#' PredictedData <- QualityControl(PredictedData,model=FULL_HA)
+#'
+#' PredictedData <- Stringent_filter(PredictedData)
+#'
+Stringent_filter<- function(data,
+                            QC_value=0.2){
+
+      filter<-data$Probability<QC_value
+      data$Clade <- as.character(data$Clade)
+      data$Clade[filter]<-"unknown"
+  return(data)
+}
 
 
 

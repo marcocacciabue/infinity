@@ -36,6 +36,8 @@ calling_null<-ranger::predictions(HA1)
 PredictedData <- PredictionCaller(NormalizedData=NormalizedData,model=HA1)
 PredictedData
 PredictedData <- QualityControl(model=FULL_HA,PredictedData)
+Stringent_filter(PredictedData)
+
 
 test_that("A dataframe is produced with the corresponding results ", {
   expect_true(is.data.frame(PredictedData))

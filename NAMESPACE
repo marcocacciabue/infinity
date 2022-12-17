@@ -3,5 +3,6 @@
 export(Kcounter)
 export(PredictionCaller)
 export(QualityControl)
+export(Stringent_filter)
 export(runShinyApp)
 importFrom(ranger,predictions)
