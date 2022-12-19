@@ -163,3 +163,36 @@ Stringent_filter<- function(data,
 
 
 
+#' Quality_filter
+#'
+#' Change Clade definition to LowQuality in samples with either a FLAg from genome length or
+#' proportion of N bases.
+#'
+#' @inheritParams QualityControl
+#'
+#' @return data.frame
+#' @export
+#'
+#' @examples
+#'
+#' file_path<-system.file("extdata","test_dataset.fasta",package="infinity")
+#'
+#' sequence<-ape::read.FASTA(file_path,type = "DNA")
+#'
+#' NormalizedData <- Kcounter(SequenceData=sequence,model=FULL_HA)
+#'
+#' PredictedData <- PredictionCaller(NormalizedData=NormalizedData,model=FULL_HA)
+#'
+#' PredictedData <- QualityControl(PredictedData,model=FULL_HA)
+#'
+#' PredictedData <- Quality_filter(PredictedData)
+#'
+Quality_filter<- function(data){
+
+  filter<-!(data$Length_QC&data$N_QC)
+  data$Clade <- as.character(data$Clade)
+  data$Clade[filter]<-"LowQuality"
+  return(data)
+}
+
+

@@ -62,6 +62,7 @@ ui<-shinyUI(
         sliderInput("QC", "Probability threshold (default 0.6):",
                     min = 0.2, max = 1,
                     value = 0.6, step = 0.05),
+        checkboxInput("qualityfilter", "Classify even if quality of sequence is low?", FALSE),
         actionButton("go", "RUN"),
         HTML("<br><br><br>"),
         br(),
@@ -173,6 +174,9 @@ Also, remember that the file must NOT exceed 2 MB in size.
                                        data=data_out,
                                        QC_value=input$QC)
     data_out<-infinity::Stringent_filter(data=data_out)
+    if(input$qualityfilter==FALSE){
+    data_out<-infinity::Quality_filter(data=data_out)
+    }
     data_out
   })
 
