@@ -51,8 +51,8 @@ ui<-shinyUI(
         includeHTML("www/title.html"),
         div("Enabled by data from",tags$a(img(style="width: 50px", src = "GISAID.png"),href="https://www.gisaid.org/")),
         br(),
-        textAreaInput('SequenceData', 'Paste your SequenceData sequences in FASTA format into the field below', value = "", placeholder = "", width = "70%", height="100px"),
-        fileInput("file", "Submit a file with your SequenceData sequences in FASTA format",
+        textAreaInput('SequenceData', 'Paste your sequences in FASTA format into the field below', value = "", placeholder = "", width = "70%", height="100px"),
+        fileInput("file", "Submit a file with your sequences in FASTA format",
                   accept = c(".text",".fasta",".fas",".fasta")),
         radioGroupButtons(
           inputId = "select",
