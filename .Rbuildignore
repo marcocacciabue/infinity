@@ -1,3 +1,10 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
 ^LICENSE\.md$
+^README\.Rmd$
+comandos_para_paquete.R
+INFINITy.png
+^\.github$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
