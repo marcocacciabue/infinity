@@ -166,7 +166,7 @@ Also, remember that the file must NOT exceed 2 MB in size.
   })
 
   data_predicted<-reactive({
-    req(values$SequenceData_FILE)
+    # req(values$SequenceData_FILE)
     model <- model_reactive()$model
     data_out<-data_reactive()$data_out
 
@@ -197,7 +197,7 @@ Also, remember that the file must NOT exceed 2 MB in size.
     table<-table()
     # table<-table %>% filter(Probability_QC == 1 & N_QC == 1 & Length_QC == 1)
 
-    table<-table %>% filter(Probability_QC == 1)
+    table<-table[table$Probability_QC == 1,]
   })
 
 
@@ -206,7 +206,7 @@ Also, remember that the file must NOT exceed 2 MB in size.
     table<-table()
     # table<-table %>% filter(Probability_QC == 0 | N_QC == 0 | Length_QC == 0)
 
-    table<-table %>% filter(Probability_QC == 0)
+    table<-table[table$Probability_QC == 0,]
   })
 
   output$table <- DT::renderDataTable({
