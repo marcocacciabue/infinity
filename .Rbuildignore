@@ -8,3 +8,4 @@ INFINITy.png
 ^_pkgdown\.yml$
 ^docs$
 ^pkgdown$
+^inst/myapp/models$

@@ -6,6 +6,7 @@
 #' @param model  random forest classification model. Must be FULL_HA or HA1. See [FULL_HA] and [HA1].
 #'
 #' @return warnings
+#'
 #' @export
 #'
 #' @examples
@@ -16,7 +17,7 @@ ModelControl<- function(model){
     stop("Model argument must be indicated and cannot be null. Try model=FULL_HA or model=HA1")
   }
 
-  if (is(model)!="ranger"){
+  if (methods::is(model)!="ranger"){
     stop("Model must be a ranger object. Try model=FULL_HA or model=HA1")
   }
 
