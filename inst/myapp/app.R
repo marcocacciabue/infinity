@@ -312,8 +312,7 @@ Also, remember that the file must NOT exceed 2 MB in size.
       # case we don't have write permissions to the current working dir (which
       # can happen when deployed).
       tempReport <- file.path(tempdir(), "report.rmd")
-      file_path<-system.file("myapp","report.rmd",package="infinity")
-      file.copy(file_path, tempReport, overwrite = TRUE)
+      file.copy("report.rmd", tempReport, overwrite = TRUE)
 
       # Set up parameters to pass to Rmd document
 
