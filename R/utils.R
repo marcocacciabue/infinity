@@ -30,3 +30,18 @@ ModelControl<- function(model){
 
 
 }
+
+
+#' Ignore unused imports
+#'
+#' @return nothing
+#'
+#'
+ignore_unused_imports <- function() {
+  # elminate NOTE y R CMD CHECK as suggested in https://r-pkgs.org/dependencies-in-practice.html
+  DT::dataTableOutput
+  bslib::bootstrap
+  shinyWidgets::actionGroupButtons
+  shinyjs::click
+  tibble::add_row
+  }

@@ -22,7 +22,7 @@ library(shinyWidgets)
 # library(RColorBrewer)
 
 
-theme_INFINITy <- bs_theme(bg = "#FFFFFF",
+theme_INFINITy <- bslib::bs_theme(bg = "#FFFFFF",
                        fg = "#4e79cb",
                        primary = "#ffc72c",
                        secondary= "#ee65cd",
@@ -312,7 +312,8 @@ Also, remember that the file must NOT exceed 2 MB in size.
       # case we don't have write permissions to the current working dir (which
       # can happen when deployed).
       tempReport <- file.path(tempdir(), "report.rmd")
-      file.copy("report.rmd", tempReport, overwrite = TRUE)
+      file_path<-system.file("myapp","report.rmd",package="infinity")
+      file.copy(file_path, tempReport, overwrite = TRUE)
 
       # Set up parameters to pass to Rmd document
 
@@ -327,3 +328,4 @@ Also, remember that the file must NOT exceed 2 MB in size.
 }
 
 shinyApp(ui = ui, server = server)
+
