@@ -7,10 +7,8 @@ Authors@R:
 Description: A set of functions for classifying HA HUMAN INFLUENZA
     sequences. It includes a shiny app for interactive functionality.
 License: MIT + file LICENSE
-Encoding: UTF-8
-Language: es
-Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.2.3
+Depends: 
+    R (>= 3.6)
 Imports: 
     ape,
     bslib,
@@ -26,8 +24,12 @@ Suggests:
     knitr,
     rmarkdown,
     testthat (>= 3.0.0)
-VignetteBuilder: knitr
+VignetteBuilder: 
+    knitr
 Config/testthat/edition: 3
-Depends: 
-    R (>= 2.10)
+Encoding: UTF-8
+Language: es
 LazyData: true
+LazyDataCompression: bzip2
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.3
