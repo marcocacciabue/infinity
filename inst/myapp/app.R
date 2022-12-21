@@ -1,9 +1,9 @@
 # library(renv)
 library(shiny)
 library(bslib)
-library(ranger)
-library(kmer)
-library(ape)
+# library(ranger)
+# library(kmer)
+# library(ape)
 library(DT)
 # library(seqinr)
 
@@ -14,12 +14,12 @@ options(shiny.maxRequestSize = 2000*1024^2)
 library(shinyjs)
 #for mac, without this Rstudio crashes
 Sys.setenv(LIBGL_ALWAYS_SOFTWARE=1)
-library(tibble)
+# library(tibble)
 # library(RColorBrewer)
-library(parallel)
+# library(parallel)
 # library(shinylogs)
 library(shinyWidgets)
-library(RColorBrewer)
+# library(RColorBrewer)
 
 
 theme_INFINITy <- bs_theme(bg = "#FFFFFF",

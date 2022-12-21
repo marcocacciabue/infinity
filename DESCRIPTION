@@ -5,34 +5,33 @@ Authors@R:
     person(given = "Marco",
            family = "Cacciabue",
            role = c("aut", "cre"),
-           email = "marcocacciabue2014@gmail.com",
+           email = "marcocacciabue@yahoo.com",
            comment = c(ORCID = "http://orcid.org/0000-0002-1429-4252"))
 Description: What the package does (one paragraph).
 License: MIT + file LICENSE
-Encoding: UTF-8
-Language: es
-LazyData: true
-Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.1.1
+Depends: 
+    R (>= 2.10)
 Imports: 
     ape,
     bslib,
     DT,
     kmer,
     methods,
-    parallel,
     ranger,
-    RColorBrewer,
     shiny,
     shinyjs,
     shinyWidgets,
-    tibble,
-    usethis
+    tibble
 Suggests: 
-    rmarkdown,
     knitr,
+    rmarkdown,
     testthat (>= 3.0.0)
-VignetteBuilder: knitr
+VignetteBuilder: 
+    knitr
 Config/testthat/edition: 3
-Depends: 
-    R (>= 3.50)
+Encoding: UTF-8
+Language: es
+LazyData: true
+LazyDataCompression: bzip2
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.1
