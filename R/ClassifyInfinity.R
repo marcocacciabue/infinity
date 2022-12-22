@@ -22,7 +22,9 @@
 ClassifyInfinity<-function(inputFile,
                            outputFile="results.csv",
                            model,
-                           QC_value=0.6){
+                           QC_value=0.6,
+                           Length_value=0.2,
+                           N_value=2){
 
   sequence<-ape::read.FASTA(inputFile,type = "DNA")
 

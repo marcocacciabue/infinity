@@ -59,9 +59,15 @@ ui<-shinyUI(
           label = "Choose the model according your SequenceData length sequences",
           choices = c("FULL_HA", "HA1"),
           status = "primary"),
-        sliderInput("QC", "Probability threshold (default 0.6):",
+        sliderInput("QC_value", "Probability threshold (default 0.6):",
                     min = 0.2, max = 1,
                     value = 0.6, step = 0.05),
+        sliderInput("N_value", "Percentage of acceptable ambiguous bases (default 2):",
+                    min = 0.1, max = 10,
+                    value = 2, step = 0.05),
+        sliderInput("Length_value", "Proportion of difference to the expected sequence length (default 0.2): :",
+                    min = 0.1, max = 0.4,
+                    value = 0.2, step = 0.05),
         checkboxInput("qualityfilter", "Classify even if quality of sequence is low?", FALSE),
         actionButton("go", "RUN"),
         HTML("<br><br><br>"),
@@ -172,13 +178,15 @@ Also, remember that the file must NOT exceed 2 MB in size.
 
     data_out<-infinity::QualityControl(model=model,
                                        data=data_out,
-                                       QC_value=input$QC)
-    data_out<-infinity::Stringent_filter(data=data_out)
+                                       QC_value=input$QC_value,
+                                       N_value=input$N_value,
+                                       Length_value=input$Length_value)
     if(input$qualityfilter==FALSE){
     data_out_filtered<-infinity::Quality_filter(data=data_out)
     }else{
     data_out_filtered<-data_out
     }
+
     data_out_filtered
   })
 
@@ -198,8 +206,10 @@ Also, remember that the file must NOT exceed 2 MB in size.
 
     table<-table()
     # table<-table %>% filter(Probability_QC == 1 & N_QC == 1 & Length_QC == 1)
+    filter<-(table$Probability_QC == 1 & table$N_QC == 1 & table$Length_QC == 1)
+    table<-table[filter,]
 
-    table<-table[table$Probability_QC == 1,]
+    # table<-table[table$Probability_QC == 1,]
   })
 
 
@@ -208,7 +218,10 @@ Also, remember that the file must NOT exceed 2 MB in size.
     table<-table()
     # table<-table %>% filter(Probability_QC == 0 | N_QC == 0 | Length_QC == 0)
 
-    table<-table[table$Probability_QC == 0,]
+    # table<-table[table$Probability_QC == 0,]
+    filter<-(table$Probability_QC == 0 | table$N_QC == 0 | table$Length_QC == 0)
+    table<-table[filter,]
+
   })
 
   output$table <- DT::renderDataTable({

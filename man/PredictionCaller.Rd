@@ -4,12 +4,14 @@
 \alias{PredictionCaller}
 \title{PredictionCaller}
 \usage{
-PredictionCaller(NormalizedData, model)
+PredictionCaller(NormalizedData, model, QC_unknown = 0.2)
 }
 \arguments{
 \item{NormalizedData}{A list of 3 vectors: normalized k-mer counts, genome length and contents of undefined bases.Produced by the´Kcounter´ function}
 
 \item{model}{A random forest classification model. Must be FULL_HA or HA1. See \link{FULL_HA} and \link{HA1}.}
+
+\item{QC_unknown}{numeric value from 0 to 1. Stringent filter, do not classify below this probability score (default = 0.2)}
 }
 \value{
 Data.frame with the classification results and quality checks.

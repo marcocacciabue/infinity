@@ -4,7 +4,14 @@
 \alias{ClassifyInfinity}
 \title{Infinity pipeline}
 \usage{
-ClassifyInfinity(inputFile, outputFile = "results.csv", model, QC_value = 0.6)
+ClassifyInfinity(
+  inputFile,
+  outputFile = "results.csv",
+  model,
+  QC_value = 0.6,
+  Length_value = 0.2,
+  N_value = 2
+)
 }
 \arguments{
 \item{inputFile}{string path relative to the working directory of the input file. Must be in fasta format.}
@@ -14,6 +21,10 @@ ClassifyInfinity(inputFile, outputFile = "results.csv", model, QC_value = 0.6)
 \item{model}{A random forest classification model. Must be FULL_HA or HA1. See \link{FULL_HA} and \link{HA1}.}
 
 \item{QC_value}{numeric value from 0 to 1. (default = 0.6)}
+
+\item{Length_value}{numeric value from 0 to 0.4. Proportion of difference to the expected sequence length. (default = 0.2)}
+
+\item{N_value}{numeric value from 0 to 100. Percentage of acceptable ambiguous bases. (default = 2)}
 }
 \value{
 a comma-delimited file

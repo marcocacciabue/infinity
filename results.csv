@@ -1,11 +1,11 @@
 "";"Label";"Clade";"Probability";"Length";"Length_QC";"N";"N_QC";"Probability_QC"
 "1";"GU433033.1 Influenza A virus (A/Novosibirsk/02/2009(H1N1)) segment 4 hemagglutinin (HA) gene, complete cds";"A(H1N1)pdm09_1";0,932;1752;TRUE;0;TRUE;TRUE
-"2";"DQ415318.1 Influenza A virus (A/TW/4845/99(H1N1)) HA gene, complete cds";"unknown";0,069;1698;TRUE;0;TRUE;TRUE
-"3";"DQ415317.1 Influenza A virus (A/TW/3355/97(H1N1)) HA gene, complete cds";"unknown";0,06;1698;TRUE;0;TRUE;TRUE
-"4";"DQ415316.1 Influenza A virus (A/TW/130/96(H1N1)) HA gene, complete cds";"unknown";0,063;1701;TRUE;0;TRUE;TRUE
+"2";"DQ415318.1 Influenza A virus (A/TW/4845/99(H1N1)) HA gene, complete cds";"LowQuality";0,069;1698;TRUE;0;TRUE;FALSE
+"3";"DQ415317.1 Influenza A virus (A/TW/3355/97(H1N1)) HA gene, complete cds";"LowQuality";0,06;1698;TRUE;0;TRUE;FALSE
+"4";"DQ415316.1 Influenza A virus (A/TW/130/96(H1N1)) HA gene, complete cds";"LowQuality";0,063;1701;TRUE;0;TRUE;FALSE
 "5";"DQ415325.1 Influenza A virus (A/TW/220/04(H3N2)) HA gene, complete cds";"A(H3N2)_1";0,427;1701;TRUE;0;TRUE;TRUE
 "6";"DQ415326.1 Influenza A virus (A/TW/875/04(H3N2)) HA gene, complete cds";"A(H3N2)_1";0,348;1701;TRUE;0;TRUE;TRUE
 "7";"DQ415324.1 Influenza A virus (A/TW/36/04(H3N2)) HA gene, complete cds";"A(H3N2)_1";0,402;1701;TRUE;0;TRUE;TRUE
 "8";"DQ415323.1 Influenza A virus (A/TW/3286/03(H3N2)) HA gene, complete cds";"A(H3N2)_1";0,365;1701;TRUE;0;TRUE;TRUE
 "9";"DQ415322.1 Influenza A virus (A/TW/229/03(H3N2)) HA gene, complete cds";"A(H3N2)_1";0,391;1701;TRUE;0;TRUE;TRUE
-"10";"DQ415321.1 Influenza A virus (A/TW/3565/02(H3N2)) HA gene, complete cds";"unknown";0,197;1701;TRUE;0;TRUE;TRUE
+"10";"DQ415321.1 Influenza A virus (A/TW/3565/02(H3N2)) HA gene, complete cds";"LowQuality";0,197;1701;TRUE;0;TRUE;FALSE

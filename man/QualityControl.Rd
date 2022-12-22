@@ -4,12 +4,16 @@
 \alias{QualityControl}
 \title{QualityControl}
 \usage{
-QualityControl(data, QC_value = 0.6, model)
+QualityControl(data, QC_value = 0.6, Length_value = 0.2, N_value = 2, model)
 }
 \arguments{
 \item{data}{data.frame obtained with \code{\link[=PredictionCaller]{PredictionCaller()}}}
 
 \item{QC_value}{numeric value from 0 to 1. (default = 0.6)}
+
+\item{Length_value}{numeric value from 0 to 0.4. Proportion of difference to the expected sequence length. (default = 0.2)}
+
+\item{N_value}{numeric value from 0 to 100. Percentage of acceptable ambiguous bases. (default = 2)}
 
 \item{model}{A random forest classification model. Must be FULL_HA or HA1. See \link{FULL_HA} and \link{HA1}.}
 }
