@@ -63,14 +63,16 @@ PredictionCaller<-function(NormalizedData,
   #                          probability,
   #                          model)
   samples<-rep(0,length(row.names(NormalizedData$DataCount)))
-  return(data.frame(Label= row.names(NormalizedData$DataCount),
+  data<-data.frame(Label= row.names(NormalizedData$DataCount),
              Clade=calling$prediction,
              Probability=probability,
              Length=NormalizedData$genome_length,
              Length_QC=samples,
              N=NormalizedData$n_length,
              N_QC=samples,
-             Probability_QC=samples))
+             Probability_QC=samples)
+  data<-infinity::Stringent_filter(data)
+  return(data)
   # return(data.frame(Label= row.names(NormalizedData$DataCount),
   #                   Clade=calling$prediction,
   #                   Probability=probability,
@@ -133,10 +135,9 @@ QualityControl<-function(data,
 #' below a threshold
 #'
 #' @inheritParams QualityControl
-#'
+#' @param QC_unknown numeric value from 0 to 1. It represents the minimum supported probability. If the value is not passed the Clade result is overwritten to unknown (default = 0.2)
 #' @return data.frame
 #' @export
-#'
 #' @examples
 #'
 #' file_path<-system.file("extdata","test_dataset.fasta",package="infinity")
@@ -149,12 +150,11 @@ QualityControl<-function(data,
 #'
 #' PredictedData <- QualityControl(PredictedData,model=FULL_HA)
 #'
-#' PredictedData <- Stringent_filter(PredictedData)
-#'
+#' PredictedData <- Quality_filter(PredictedData)
 Stringent_filter<- function(data,
-                            QC_value=0.2){
+                            QC_unknown=0.2){
 
-      filter<-data$Probability<QC_value
+      filter<-data$Probability<QC_unknown
       data$Clade <- as.character(data$Clade)
       data$Clade[filter]<-"unknown"
   return(data)
@@ -189,7 +189,7 @@ Stringent_filter<- function(data,
 #'
 Quality_filter<- function(data){
 
-  filter<-!(data$Length_QC&data$N_QC)
+  filter<-!(data$Length_QC & data$N_QC & data$Probability_QC)
   data$Clade <- as.character(data$Clade)
   data$Clade[filter]<-"LowQuality"
   return(data)

@@ -175,9 +175,11 @@ Also, remember that the file must NOT exceed 2 MB in size.
                                        QC_value=input$QC)
     data_out<-infinity::Stringent_filter(data=data_out)
     if(input$qualityfilter==FALSE){
-    data_out<-infinity::Quality_filter(data=data_out)
+    data_out_filtered<-infinity::Quality_filter(data=data_out)
+    }else{
+    data_out_filtered<-data_out
     }
-    data_out
+    data_out_filtered
   })
 
   output$text <- renderText({

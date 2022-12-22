@@ -4,12 +4,12 @@
 \alias{Stringent_filter}
 \title{Stringent_filter}
 \usage{
-Stringent_filter(data, QC_value = 0.2)
+Stringent_filter(data, QC_unknown = 0.2)
 }
 \arguments{
 \item{data}{data.frame obtained with \code{\link[=PredictionCaller]{PredictionCaller()}}}
 
-\item{QC_value}{numeric value from 0 to 1. (default = 0.6)}
+\item{QC_unknown}{numeric value from 0 to 1. It represents the minimum supported probability. If the value is not passed the Clade result is overwritten to unknown (default = 0.2)}
 }
 \value{
 data.frame
@@ -30,6 +30,5 @@ PredictedData <- PredictionCaller(NormalizedData=NormalizedData,model=FULL_HA)
 
 PredictedData <- QualityControl(PredictedData,model=FULL_HA)
 
-PredictedData <- Stringent_filter(PredictedData)
-
+PredictedData <- Quality_filter(PredictedData)
 }
