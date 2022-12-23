@@ -17,13 +17,17 @@
 #' @export
 #'
 #' @examples
+#'
+#' \dontrun{
 #' file_path<-system.file("extdata","test_dataset.fasta",package="infinity")
+#'
 #' ClassifyInfinity(inputFile=file_path,model=FULL_HA)
+#' }
 ClassifyInfinity<-function(inputFile,
                            outputFile="results.csv",
                            model,
                            QC_value=0.6,
-                           Length_value=0.2,
+                           Length_value=0.5,
                            N_value=2){
 
   sequence<-ape::read.FASTA(inputFile,type = "DNA")

@@ -9,7 +9,7 @@ ClassifyInfinity(
   outputFile = "results.csv",
   model,
   QC_value = 0.6,
-  Length_value = 0.2,
+  Length_value = 0.5,
   N_value = 2
 )
 }
@@ -20,9 +20,9 @@ ClassifyInfinity(
 
 \item{model}{A random forest classification model. Must be FULL_HA or HA1. See \link{FULL_HA} and \link{HA1}.}
 
-\item{QC_value}{numeric value from 0 to 1. (default = 0.6)}
+\item{QC_value}{numeric value from 0 to 1. (default = 0.4)}
 
-\item{Length_value}{numeric value from 0 to 0.4. Proportion of difference to the expected sequence length. (default = 0.2)}
+\item{Length_value}{numeric value from 0 to 1. Proportion of difference to the expected sequence length. (default = 0.5)}
 
 \item{N_value}{numeric value from 0 to 100. Percentage of acceptable ambiguous bases. (default = 2)}
 }
@@ -39,6 +39,10 @@ Wrapper function that performs all the recommended step. This includes
 }
 }
 \examples{
+
+\dontrun{
 file_path<-system.file("extdata","test_dataset.fasta",package="infinity")
+
 ClassifyInfinity(inputFile=file_path,model=FULL_HA)
+}
 }

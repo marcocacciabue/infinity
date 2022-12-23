@@ -4,14 +4,14 @@
 \alias{QualityControl}
 \title{QualityControl}
 \usage{
-QualityControl(data, QC_value = 0.6, Length_value = 0.2, N_value = 2, model)
+QualityControl(data, QC_value = 0.4, Length_value = 0.5, N_value = 2, model)
 }
 \arguments{
 \item{data}{data.frame obtained with \code{\link[=PredictionCaller]{PredictionCaller()}}}
 
-\item{QC_value}{numeric value from 0 to 1. (default = 0.6)}
+\item{QC_value}{numeric value from 0 to 1. (default = 0.4)}
 
-\item{Length_value}{numeric value from 0 to 0.4. Proportion of difference to the expected sequence length. (default = 0.2)}
+\item{Length_value}{numeric value from 0 to 1. Proportion of difference to the expected sequence length. (default = 0.5)}
 
 \item{N_value}{numeric value from 0 to 100. Percentage of acceptable ambiguous bases. (default = 2)}
 

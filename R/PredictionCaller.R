@@ -96,8 +96,8 @@ PredictionCaller<-function(NormalizedData,
 #' QualityControl
 #'
 #' @param data data.frame obtained with [PredictionCaller()]
-#' @param QC_value numeric value from 0 to 1. (default = 0.6)
-#' @param Length_value numeric value from 0 to 0.4. Proportion of difference to the expected sequence length. (default = 0.2)
+#' @param QC_value numeric value from 0 to 1. (default = 0.4)
+#' @param Length_value numeric value from 0 to 1. Proportion of difference to the expected sequence length. (default = 0.5)
 #' @param N_value numeric value from 0 to 100. Percentage of acceptable ambiguous bases. (default = 2)
 #' @inheritParams Kcounter
 #' @return A list with three logical vectors. In each case TRUE means pass.
@@ -118,8 +118,8 @@ PredictionCaller<-function(NormalizedData,
 #'
 #'
 QualityControl<-function(data,
-                         QC_value=0.6,
-                         Length_value=0.2,
+                         QC_value=0.4,
+                         Length_value=0.5,
                          N_value=2,
                          model){
   ModelControl(model)
@@ -142,8 +142,8 @@ QualityControl<-function(data,
     stop("`N_value` must be numeric and between 0 to 10")
   }
 
-  if(Length_value>0.4 | Length_value<0){
-    stop("`Length_value` must be numeric and between 0 to 0.4")
+  if(Length_value>1 | Length_value<0){
+    stop("`Length_value` must be numeric and between 0 to 1")
   }
 
   data$N_QC<-(data$N<N_value)
@@ -170,10 +170,10 @@ QualityControl<-function(data,
 
 #' Quality_filter
 #'
-#' Change Clade definition to LowQuality in samples with either a FLAg from genome length or
+#' Change Clade definition to LowQuality in samples with a FLAG [QualityControl()]
 #' proportion of N bases.
 #'
-#' @inheritParams QualityControl
+#' @param data data.frame obtained with [QualityControl()]
 #'
 #' @return data.frame
 #' @export

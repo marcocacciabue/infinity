@@ -7,13 +7,13 @@
 Quality_filter(data)
 }
 \arguments{
-\item{data}{data.frame obtained with \code{\link[=PredictionCaller]{PredictionCaller()}}}
+\item{data}{data.frame obtained with \code{\link[=QualityControl]{QualityControl()}}}
 }
 \value{
 data.frame
 }
 \description{
-Change Clade definition to LowQuality in samples with either a FLAg from genome length or
+Change Clade definition to LowQuality in samples with a FLAG \code{\link[=QualityControl]{QualityControl()}}
 proportion of N bases.
 }
 \examples{
