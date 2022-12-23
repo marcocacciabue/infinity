@@ -16,13 +16,13 @@ Imports:
     kmer,
     methods,
     ranger,
+    rmarkdown,
     shiny,
     shinyjs,
     shinyWidgets,
     tibble
 Suggests: 
     knitr,
-    rmarkdown,
     testthat (>= 3.0.0)
 VignetteBuilder: 
     knitr
