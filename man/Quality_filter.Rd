@@ -13,8 +13,7 @@ Quality_filter(data)
 data.frame
 }
 \description{
-Change Clade definition to LowQuality in samples with a FLAG \code{\link[=QualityControl]{QualityControl()}}
-proportion of N bases.
+Change Clade definition to "LowQuality" in samples with at least one FLAG from \code{\link[=QualityControl]{QualityControl()}}.
 }
 \examples{
 

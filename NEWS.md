@@ -1,3 +1,6 @@
+# infinity 0.3.0
+* added support for running infinity directly on a R console.
+* updated README file.
 # infinity 0.2.0
 
 # infinity 0.1.0

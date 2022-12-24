@@ -8,7 +8,7 @@ ClassifyInfinity(
   inputFile,
   outputFile = "results.csv",
   model,
-  QC_value = 0.6,
+  QC_value = 0.4,
   Length_value = 0.5,
   N_value = 2
 )

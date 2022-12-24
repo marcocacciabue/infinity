@@ -3,20 +3,20 @@
 #'
 #' Performs the prediction and computes probability values.
 #'
-#' @param NormalizedData A list of 3 vectors: normalized k-mer counts, genome length and contents of undefined bases.Produced by the´Kcounter´ function
+#' @param NormalizedData A list of 3 elements: normalized k-mer counts, genome length and contents of undefined bases.Produced by the [Kcounter()] function
 #' @inheritParams Kcounter
 #' @param QC_unknown numeric value from 0 to 1. Stringent filter, do not classify below this probability score (default = 0.2)
 #' @return Data.frame with the classification results and quality checks.
 #' The output has the following properties:
-#' * Each line corresponds to one sequence.
+#' * Each row corresponds to one sample sequence.
 #' * `Label` is the name of the sequence.
 #' * `Clade` is the corresponding prediction.
-#' * `Probability` is the proportions of trees that agreed with the Clade result. values between 0 to 1.
-#' * `Probability_QC` a logical value. If `TRUE` the sequence passed the quality filter for probability.
+#' * `Probability` is the proportions of trees that agreed with the Clade result. Values between 0 to 1.
+#' * `Probability_QC` a logical value. If `TRUE` the sequence passed the quality filter for probability. Run [QualityControl()] to fill this column.
 #' * `Length` Sequence length.
-#' * `Length_QC` a logical value. If `TRUE` the sequence passed the quality filter for length.
+#' * `Length_QC` a logical value. If `TRUE` the sequence passed the quality filter for length.Run [QualityControl()] to fill this column
 #' * `N` proportions of undefined bases in the sequence. The lower the better.
-#' * `N_QC` a logical value. If `TRUE` the sequence passed the quality filter for undefined bases.
+#' * `N_QC` a logical value. If `TRUE` the sequence passed the quality filter for undefined bases. Run [QualityControl()] to fill this column
 #'
 #' @export
 #' @importFrom ranger predictions
@@ -81,14 +81,6 @@ PredictionCaller<-function(NormalizedData,
 
 
   return(data)
-  # return(data.frame(Label= row.names(NormalizedData$DataCount),
-  #                   Clade=calling$prediction,
-  #                   Probability=probability,
-  #                   Length=NormalizedData$genome_length,
-  #                   Length_QC=QualityList$Length_QC,
-  #                   N=NormalizedData$n_length,
-  #                   N_QC=QualityList$n_QC,
-  #                   Probability_QC=QualityList$Probability_QC))
 }
 
 
@@ -170,8 +162,7 @@ QualityControl<-function(data,
 
 #' Quality_filter
 #'
-#' Change Clade definition to LowQuality in samples with a FLAG [QualityControl()]
-#' proportion of N bases.
+#' Change Clade definition to "LowQuality" in samples with at least one FLAG from [QualityControl()].
 #'
 #' @param data data.frame obtained with [QualityControl()]
 #'

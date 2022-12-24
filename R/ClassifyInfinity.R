@@ -26,7 +26,7 @@
 ClassifyInfinity<-function(inputFile,
                            outputFile="results.csv",
                            model,
-                           QC_value=0.6,
+                           QC_value=0.4,
                            Length_value=0.5,
                            N_value=2){
 
@@ -42,7 +42,9 @@ ClassifyInfinity<-function(inputFile,
   #  Check Quality of the input data and classification results
   PredictedData <- QualityControl(PredictedData,
                                   model=model,
-                                  QC_value=QC_value)
+                                  QC_value=QC_value,
+                                  Length_value=Length_value,
+                                  N_value=N_value)
   # For sequences with any FLAG present set result Clade to LowQuality
 
   PredictedData <- Quality_filter(PredictedData)

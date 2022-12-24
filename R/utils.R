@@ -44,4 +44,5 @@ ignore_unused_imports <- function() {
   shinyWidgets::actionGroupButtons
   shinyjs::click
   tibble::add_row
+  rmarkdown::clean_site
   }
