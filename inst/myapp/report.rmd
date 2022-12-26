@@ -13,7 +13,7 @@ output:
         google: "JetBrains Mono"
 ---
 
-This report was created using the **INFINITy: a machine learning-based web application for human influenza A & B virus classification v`r version()`** software for subtyping of Human Influenza HA sequences.<br />
+This report was created using the **INFINITy: a machine learning-based web application for human influenza A & B virus classification v`r packageVersion("infinity")`** software for subtyping of Human Influenza HA sequences.<br />
 
 <h2>
 

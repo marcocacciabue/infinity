@@ -318,9 +318,7 @@ Also, remember that the file must NOT exceed 2 MB in size.
 
 
   })
-  version<-reactive({
-    version<-0.1
-    return(version)})
+
 
   output$report <- downloadHandler(
     # For PDF output, change this to "report.pdf"
