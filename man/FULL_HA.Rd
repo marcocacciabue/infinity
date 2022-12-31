@@ -5,7 +5,7 @@
 \alias{FULL_HA}
 \title{Random forest classification model based on full length HA sequence}
 \format{
-A list with 18 elements (modified from a Object of class \code{ranger}):
+The model includes a list with 18 elements (modified from a Object of class \code{ranger}):
 \describe{
 \item{predictions}{training dataset predictions}
 \item{num.trees}{Number of decision trees (ussually 1000)}
@@ -31,6 +31,5 @@ FULL_HA
 }
 \description{
 This a classification model (created with the ranger package) to use with the infinity package
-The model includes:
 }
 \keyword{datasets}

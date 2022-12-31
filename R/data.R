@@ -1,9 +1,9 @@
 #' Random forest classification model based on full length HA sequence
 #'
 #' This a classification model (created with the ranger package) to use with the infinity package
-#' The model includes:
 #'
-#' @format A list with 18 elements (modified from a Object of class `ranger`):
+#'
+#' @format The model includes a list with 18 elements (modified from a Object of class `ranger`):
 #' \describe{
 #'   \item{predictions}{training dataset predictions}
 #'   \item{num.trees}{Number of decision trees (ussually 1000)}
@@ -28,9 +28,9 @@
 #' Random forest classification model based on partial length HA1 sequence
 #'
 #' This a classification model (created with the ranger package) to use with the infinity package
-#' The model includes:
 #'
-#' @format A list with 18 elements (modified from a Object of class `ranger`):
+#'
+#' @format The model includes a list with 18 elements (modified from a Object of class `ranger`):
 #' \describe{
 #'   \item{predictions}{training dataset predictions}
 #'   \item{num.trees}{Number of decision trees (ussually 1000)}
