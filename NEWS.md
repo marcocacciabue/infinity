@@ -1,5 +1,5 @@
 # infinity 0.3.2
-
+* Added correct CITATION information. You can get this info by running citation("infinity")
 # infinity 0.3.1
 * Changed Clade definition 3C.2a1b+T135N to 3C.2a1b.3.
 * minor typos fixed.

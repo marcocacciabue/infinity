@@ -1,0 +1,11 @@
+bibentry(
+  bibtype  = "Article",
+  title    = "INFINITy: A fast machine learning-based application for human influenza A and B virus subtyping",
+  author   = "Cacciabue, Marco and Marcone, Débora N.",
+  journal  = "Influenza and Other Respiratory Viruses",
+  year     = "2023",
+  volume   = "17",
+  number   = "1",
+  pages    = "e13096",
+  doi      = "https://doi.org/10.1111/irv.13096"
+)

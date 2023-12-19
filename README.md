@@ -19,7 +19,7 @@ go to one the following servers:
 ## [INFINITy web-application secondary server!](https://cacciabue.shinyapps.io/infinity2/)
 
 If you find our app useful please consider citing: [Cacciabue et al
-2022](https://www.biorxiv.org/)
+2023](https://doi.org/10.1111/irv.13096)
 
 ## :arrow_double_down: Installation
 
