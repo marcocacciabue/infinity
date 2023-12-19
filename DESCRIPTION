@@ -1,6 +1,6 @@
 Package: infinity
 Title: Classify HA HUMAN INFLUENZA sequences
-Version: 0.3.1
+Version: 0.3.2
 Authors@R: 
     person("Marco", "Cacciabue", , "marcocacciabue@yahoo.com", role = c("aut", "cre"),
            comment = c(ORCID = "http://orcid.org/0000-0002-1429-4252"))

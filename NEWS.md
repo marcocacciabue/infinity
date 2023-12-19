@@ -1,3 +1,5 @@
+# infinity 0.3.2
+
 # infinity 0.3.1
 * Changed Clade definition 3C.2a1b+T135N to 3C.2a1b.3.
 * minor typos fixed.
